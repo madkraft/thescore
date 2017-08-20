@@ -1,18 +1,19 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
 import { Link } from 'preact-router/match';
-import style from './style';
+import styled from 'styled-components';
 
-export default class Header extends Component {
-	render() {
-		return (
-			<header class={style.header}>
-				<h1>Preact App</h1>
-				<nav>
-					<Link activeClassName={style.active} href="/">Home</Link>
-					<Link activeClassName={style.active} href="/profile">Me</Link>
-					<Link activeClassName={style.active} href="/profile/john">John</Link>
-				</nav>
-			</header>
-		);
-	}
-}
+const Navbar = styled.nav`
+	background: yellow;
+`;
+
+const Header = () => (
+	<Navbar class="navbar">
+		<div class="navbar-brand">
+			<div class="navbar-item">The Score</div>
+			<Link activeClassName="active" class="navbar-item" href="/">Latest scores</Link>
+			<Link activeClassName="active" class="navbar-item" href="/competitions">Standings</Link>
+		</div>
+	</Navbar>
+);
+
+export default Header
